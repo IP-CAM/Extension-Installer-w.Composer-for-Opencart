@@ -1,5 +1,5 @@
 {
-    "name": "beyondit/opencart-extension-installer",
+    "name": "kotygor/opencart-extension-installer",
     "description": "Custom Composer Installer for installing OpenCart Extensions",
     "type": "composer-plugin",
     "require": {
