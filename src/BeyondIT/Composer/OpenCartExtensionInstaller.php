@@ -155,7 +155,6 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 	    $doc  = fopen( $file, 'a' );
 	    file_put_contents( $file, PHP_EOL . '====================' . date( "H:i:s" ) . '=====================', FILE_APPEND );
 	    file_put_contents( $file, PHP_EOL . print_r(['srcDir' => $srcDir, 'openCartDir' => $openCartDir], 1), FILE_APPEND );
-	    file_put_contents( $file, PHP_EOL . '====================' . date( "H:i:s" ) . '=====================', FILE_APPEND );
 
         $this->copyFiles($srcDir, $openCartDir, $target->getExtra());
         $this->runExtensionInstaller($this->getInstallPath($target), $target->getName(), $target->getExtra());
