@@ -4,7 +4,7 @@
     "type": "composer-plugin",
     "require": {
         "composer-plugin-api": "~1.1",
-        "kotygor/opencart": "dev-fcb"
+        "kotygor/opencart": "*"
     },
     "license": "GPL 3.0",
     "authors": [
