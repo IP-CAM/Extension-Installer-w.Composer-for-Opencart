@@ -14,8 +14,8 @@ class OpenCartExtensionInstaller extends LibraryInstaller
     {
         $extra = $this->composer->getPackage()->getExtra();
 
-        if (isset($extra['opencart-dir'])) {
-            return $extra['opencart-dir'];
+        if (isset($extra['opencart-install-dir'])) {
+            return $extra['opencart-install-dir'];
         }
 
         // OC directory "upload" is root dir
