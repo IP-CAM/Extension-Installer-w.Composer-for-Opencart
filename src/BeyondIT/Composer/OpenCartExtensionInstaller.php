@@ -84,7 +84,10 @@ class OpenCartExtensionInstaller extends LibraryInstaller
     }
 
     public function runPhpExtensionInstaller($file) {
+	    $this->io->write("  <info>File: {$file}</info>");
     	$file = str_replace('\\', '/', $file); // Windows systems address fix
+	    $this->io->write("  <info>File: {$file}</info>");
+
         $registry = null;
         $openCartDir = $this->getOpenCartDir();
 
