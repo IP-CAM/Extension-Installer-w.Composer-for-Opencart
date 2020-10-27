@@ -15,4 +15,11 @@ class OpenCartExtensionInstallerPlugin implements PluginInterface
         $installer = new OpenCartExtensionInstaller($io, $composer, $this->packageType);
         $composer->getInstallationManager()->addInstaller($installer);
     }
+
+	public function deactivate(Composer $composer, IOInterface $io) {
+
+	}
+	public function uninstall(Composer $composer, IOInterface $io) {
+
+	}
 }
