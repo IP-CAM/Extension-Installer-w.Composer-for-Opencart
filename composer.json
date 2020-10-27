@@ -3,7 +3,7 @@
     "description": "Custom Composer Installer for installing OpenCart Extensions",
     "type": "composer-plugin",
     "require": {
-        "composer-plugin-api": "~1.1",
+        "composer-plugin-api": "~2",
         "kotygor/opencart": "*"
     },
     "license": "GPL 3.0",
@@ -20,7 +20,7 @@
         "class": "BeyondIT\\Composer\\OpenCartExtensionInstallerPlugin"
     },
     "require-dev": {
-        "composer/composer": "^1.1" ,
+        "composer/composer": "^2" ,
         "phpunit/phpunit": "~4"
     },
     "minimum-stability": "dev"
