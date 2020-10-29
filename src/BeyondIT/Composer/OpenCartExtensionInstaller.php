@@ -48,9 +48,21 @@ class OpenCartExtensionInstaller extends LibraryInstaller
                 $source = $sourceDir . "/" . $mapping;
                 $target = $targetDir . "/" . $mapping;
                 $filesystem->copy($source, $target, true);
-	            $this->io->write($source . " => " . $target);
             }
         }
+    }
+    /**
+     * @param array $extra extra array
+     */
+    public function removeFiles($targetDir, array $extra) {
+	    $filesystem = new Filesystem();
+
+	    if (isset($extra['mappings']) && is_array($extra['mappings'])) {
+		    foreach($extra['mappings'] as $mapping) {
+			    $target = $targetDir . "/" . $mapping;
+			    $filesystem->remove($target);
+		    }
+	    }
     }
 
     /**
@@ -150,6 +162,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      */
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
+    	$this->io->write(print_r($initial, 1));
         parent::update($repo, $initial, $target);
 
         $srcDir = $this->getSrcDir($this->getInstallPath($target), $target->getExtra());
