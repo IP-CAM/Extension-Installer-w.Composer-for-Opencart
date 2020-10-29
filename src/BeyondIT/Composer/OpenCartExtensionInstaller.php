@@ -48,6 +48,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
                 $source = $sourceDir . "/" . $mapping;
                 $target = $targetDir . "/" . $mapping;
                 $filesystem->copy($source, $target, true);
+	            $this->io->write($source . " => " . $target);
             }
         }
     }
@@ -101,26 +102,27 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 
         // only trigger install iff config is available
         if (is_file('admin/config.php')) {
-        $_SERVER['SERVER_PORT'] = 80;
-        $_SERVER['SERVER_PROTOCOL'] = 'CLI';
-        $_SERVER['REQUEST_METHOD'] = 'GET';
-        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+	        $_SERVER['SERVER_PORT'] = 80;
+	        $_SERVER['SERVER_PROTOCOL'] = 'CLI';
+	        $_SERVER['REQUEST_METHOD'] = 'GET';
+	        $_SERVER['REMOTE_ADDR'] = '127.0.0.1';
 
-        ob_start();
-            require_once('admin/config.php');
-            $application_config = "admin";
-            include('system/startup.php');
-            include('system/framework.php');
-        ob_end_clean();
+	        ob_start();
+	            require_once('admin/config.php');
+	            $application_config = "admin";
+	            include('system/startup.php');
+//	            include('system/framework.php');
+	            start($application_config);
+	        ob_end_clean();
 
-        chdir($tmpDir);
+	        chdir($tmpDir);
 
-            // $registry comes from system/framework.php
-        OpenCartNaivePhpInstaller::$registry = $registry;
+	            // $registry comes from system/framework.php
+	        OpenCartNaivePhpInstaller::$registry = $registry;
 
-        $installer = new OpenCartNaivePhpInstaller();
-        $installer->install($file);
-    }
+	        $installer = new OpenCartNaivePhpInstaller();
+	        $installer->install($file);
+	    }
     }
 
     public function runXmlExtensionInstaller($src, $name) {

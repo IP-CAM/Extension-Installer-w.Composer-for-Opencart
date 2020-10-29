@@ -6,11 +6,21 @@
         "composer-plugin-api": "~2",
         "kotygor/opencart": "*"
     },
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/kotygor/opencart"
+        }
+    ],
     "license": "GPL 3.0",
     "authors": [
         {
             "name": "Stefan Huber",
             "email": "stefan.huber@beyondit.at"
+        },
+        {
+            "name": "Juriy Doskoch",
+            "email": "zelenuj@gmail.com"
         }
     ],
     "autoload": {
@@ -20,8 +30,8 @@
         "class": "BeyondIT\\Composer\\OpenCartExtensionInstallerPlugin"
     },
     "require-dev": {
-        "composer/composer": "^2" ,
-        "phpunit/phpunit": "~4"
+        "composer/composer": "~2" ,
+        "phpunit/phpunit": "~9"
     },
     "minimum-stability": "dev"
 }
