@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "ff27796cc7aa529791c0e854119e3ca3",
+    "content-hash": "2dfa280ee57eff373862bdc94ab98ee2",
     "packages": [
         {
             "name": "braintree/braintree_php",
@@ -1669,6 +1669,27 @@
                 "source": "https://github.com/justinrainbow/json-schema/tree/5.2.10"
             },
             "time": "2020-05-27T16:41:55+00:00"
+        },
+        {
+            "name": "kotygor/mylog",
+            "version": "v2.x-dev",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/kotygor/mylog",
+                "reference": "be9825bb3995f3435a99644c2b133c54d2127232"
+            },
+            "type": "library",
+            "license": [
+                "proprietary"
+            ],
+            "authors": [
+                {
+                    "name": "JD",
+                    "email": "zelenuj@gmail.com"
+                }
+            ],
+            "description": "Logger",
+            "time": "2020-10-29T13:50:02+00:00"
         },
         {
             "name": "myclabs/deep-copy",
@@ -4586,7 +4607,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "kotygor/mylog": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": {
