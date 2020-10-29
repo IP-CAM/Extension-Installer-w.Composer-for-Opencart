@@ -85,9 +85,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
     }
 
     public function runPhpExtensionInstaller($file) {
-	    $this->io->write("  <info>File: {$file}</info>");
     	$file = str_replace('\\', '/', $file); // Windows systems address fix
-	    $this->io->write("  <info>File: {$file}</info>");
 
         $registry = null;
         $openCartDir = $this->getOpenCartDir();
@@ -109,15 +107,14 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 
 	        ob_start();
 	            require_once('admin/config.php');
-	            $application_config = "admin";
+	            $application_config = 'admin';
 	            include('system/startup.php');
-//	            include('system/framework.php');
-	            start($application_config);
+	            include ('system/framework.php');
 	        ob_end_clean();
 
 	        chdir($tmpDir);
 
-	            // $registry comes from system/framework.php
+            // $registry comes from system/framework.php
 	        OpenCartNaivePhpInstaller::$registry = $registry;
 
 	        $installer = new OpenCartNaivePhpInstaller();
