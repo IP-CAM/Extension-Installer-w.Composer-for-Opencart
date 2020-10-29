@@ -7,6 +7,7 @@ use Composer\Package\PackageInterface;
 use Composer\Repository\InstalledRepositoryInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use BeyondIT\Composer\OpenCartNaivePhpInstaller;
+use Kotygor\Mylog;
 
 class OpenCartExtensionInstaller extends LibraryInstaller
 {
@@ -162,7 +163,8 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      */
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
-    	$this->io->write(print_r($initial, 1));
+    	Mylog::write($repo, "update->repo");
+    	Mylog::write($initial, 'update->initial');
         parent::update($repo, $initial, $target);
 
         $srcDir = $this->getSrcDir($this->getInstallPath($target), $target->getExtra());
