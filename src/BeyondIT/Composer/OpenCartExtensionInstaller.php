@@ -179,15 +179,8 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      */
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
-    	require_once ("../../../mylog/mylog.php");
-    	define("MYLOG_ON", true);
-    	if(function_exists('mylog') && defined('MYLOG_ON') && MYLOG_ON) {
-    	    mylog( $repo, 'repo' . ' on ' . __FILE__ . '::' . __LINE__ );
-    	}
-    	if(function_exists('mylog') && defined('MYLOG_ON') && MYLOG_ON) {
-    	    mylog( $package, 'package' . ' on ' . __FILE__ . '::' . __LINE__ );
-    	}
-	    $this->io->write(print_r($package, 1));
+   	    Mylog::write( $repo, 'repo' . ' on ' . __FILE__ . '::' . __LINE__ );
+   	    Mylog::write( $package, 'package' . ' on ' . __FILE__ . '::' . __LINE__ );
         parent::uninstall($repo, $package);
 
         // TODO: remove files from opencart
