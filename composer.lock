@@ -1676,9 +1676,14 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/kotygor/mylog",
-                "reference": "be9825bb3995f3435a99644c2b133c54d2127232"
+                "reference": "59b006d062305d3eec26d54a9b7e2bca9eae390d"
             },
             "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Kotygor\\": "src"
+                }
+            },
             "license": [
                 "proprietary"
             ],
@@ -1689,7 +1694,7 @@
                 }
             ],
             "description": "Logger",
-            "time": "2020-10-29T13:50:02+00:00"
+            "time": "2020-10-29T14:43:28+00:00"
         },
         {
             "name": "myclabs/deep-copy",
