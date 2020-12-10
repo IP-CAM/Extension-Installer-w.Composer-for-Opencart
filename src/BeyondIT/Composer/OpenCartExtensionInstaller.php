@@ -48,6 +48,11 @@ class OpenCartExtensionInstaller extends LibraryInstaller
             foreach($extra['mappings'] as $mapping) {
                 $source = $sourceDir . "/" . $mapping;
                 $target = $targetDir . "/" . $mapping;
+                Mylog::write([
+                	'Filesystem::copyFiles',
+                	'source'    => $source,
+	                'target'    =>  $target,
+                ], 'Filesystem::copyFiles');
                 $filesystem->copy($source, $target, true);
             }
         }
