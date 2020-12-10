@@ -155,6 +155,13 @@ class OpenCartExtensionInstaller extends LibraryInstaller
         $srcDir = $this->getSrcDir($this->getInstallPath($package), $package->getExtra());
         $openCartDir = $this->getOpenCartDir();
 
+        Mylog::write(
+        	[
+        		'method::install',
+        		'srcDir'    =>  $srcDir,
+		        'openCartDir'   =>  $openCartDir
+	        ], 'Dirs' );
+
         $this->copyFiles($srcDir, $openCartDir, $package->getExtra());
         $this->runExtensionInstaller($this->getInstallPath($package), $package->getName(), $package->getExtra());
     }
@@ -164,12 +171,16 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      */
     public function update(InstalledRepositoryInterface $repo, PackageInterface $initial, PackageInterface $target)
     {
-    	Mylog::write($repo, "update->repo");
-    	Mylog::write($initial, 'update->initial');
         parent::update($repo, $initial, $target);
 
         $srcDir = $this->getSrcDir($this->getInstallPath($target), $target->getExtra());
         $openCartDir = $this->getOpenCartDir();
+	    Mylog::write(
+		    [
+			    'method::update',
+			    'srcDir'    =>  $srcDir,
+			    'openCartDir'   =>  $openCartDir
+		    ], 'Dirs' );
 
         $this->copyFiles($srcDir, $openCartDir, $target->getExtra());
         $this->runExtensionInstaller($this->getInstallPath($target), $target->getName(), $target->getExtra());
@@ -180,8 +191,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      */
     public function uninstall(InstalledRepositoryInterface $repo, PackageInterface $package)
     {
-   	    Mylog::write( $repo, 'repo' . ' on ' . __FILE__ . '::' . __LINE__ );
-   	    Mylog::write( $package, 'package' . ' on ' . __FILE__ . '::' . __LINE__ );
+
         parent::uninstall($repo, $package);
 
         // TODO: remove files from opencart
