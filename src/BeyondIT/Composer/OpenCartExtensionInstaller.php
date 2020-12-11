@@ -42,7 +42,8 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      */
     public function copyFiles($sourceDir, $targetDir, array $extra)
     {
-        // $filesystem = new Filesystem();
+        $filesystem = new Filesystem();
+
 
         if (isset($extra['mappings']) && is_array($extra['mappings'])) {
             foreach($extra['mappings'] as $mapping) {
@@ -50,10 +51,11 @@ class OpenCartExtensionInstaller extends LibraryInstaller
                 $target = $targetDir . "/" . $mapping;
                 Mylog::write([
                 	'Filesystem::copyFiles',
+                	'curr_dirr' =>  getcwd(),
                 	'source'    => $source,
 	                'target'    =>  $target,
                 ], 'Filesystem::copyFiles');
-                $this->filesystem->copy($source, $target, true);
+                $filesystem->copy($source, $target, true);
             }
         }
     }
@@ -61,12 +63,12 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      * @param array $extra extra array
      */
     public function removeFiles($targetDir, array $extra) {
-	    // $filesystem = new Filesystem();
+	     $filesystem = new Filesystem();
 
 	    if (isset($extra['mappings']) && is_array($extra['mappings'])) {
 		    foreach($extra['mappings'] as $mapping) {
 			    $target = $targetDir . "/" . $mapping;
-			    $this->filesystem->remove($target);
+			    $filesystem->remove($target);
 		    }
 	    }
     }
@@ -144,10 +146,12 @@ class OpenCartExtensionInstaller extends LibraryInstaller
     public function runXmlExtensionInstaller($src, $name) {
     	$this->io->write("<info>XML installer name - {$name}</info>");
         $name = strtolower(str_replace(array("/","-"),"_",$name));
-        // $filesystem = new Filesystem();
+        $filesystem = new Filesystem();
+        Mylog::write(['curr_dirr' =>  getcwd()], 'curr_dirr');
+
         $target = $this->getOpenCartDir() . "/system/" . $name . ".ocmod.xml";
 
-        $this->filesystem->copy($src, $target, true);
+        $filesystem->copy($src, $target, true);
     }
 
     /**
