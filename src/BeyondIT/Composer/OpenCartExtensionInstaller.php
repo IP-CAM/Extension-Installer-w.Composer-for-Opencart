@@ -141,6 +141,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 	        $installer = new OpenCartNaivePhpInstaller();
 	        $installer->install($file);
 	    }
+	    chdir($tmpDir);
     }
 
     public function runXmlExtensionInstaller($src, $name) {
