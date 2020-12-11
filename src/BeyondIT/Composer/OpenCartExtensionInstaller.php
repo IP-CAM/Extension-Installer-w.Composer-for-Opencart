@@ -42,7 +42,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      */
     public function copyFiles($sourceDir, $targetDir, array $extra)
     {
-        $filesystem = new Filesystem();
+        // $filesystem = new Filesystem();
 
         if (isset($extra['mappings']) && is_array($extra['mappings'])) {
             foreach($extra['mappings'] as $mapping) {
@@ -53,7 +53,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
                 	'source'    => $source,
 	                'target'    =>  $target,
                 ], 'Filesystem::copyFiles');
-                $filesystem->copy($source, $target, true);
+                $this->filesystem->copy($source, $target, true);
             }
         }
     }
@@ -61,12 +61,12 @@ class OpenCartExtensionInstaller extends LibraryInstaller
      * @param array $extra extra array
      */
     public function removeFiles($targetDir, array $extra) {
-	    $filesystem = new Filesystem();
+	    // $filesystem = new Filesystem();
 
 	    if (isset($extra['mappings']) && is_array($extra['mappings'])) {
 		    foreach($extra['mappings'] as $mapping) {
 			    $target = $targetDir . "/" . $mapping;
-			    $filesystem->remove($target);
+			    $this->filesystem->remove($target);
 		    }
 	    }
     }
@@ -144,10 +144,10 @@ class OpenCartExtensionInstaller extends LibraryInstaller
     public function runXmlExtensionInstaller($src, $name) {
     	$this->io->write("<info>XML installer name - {$name}</info>");
         $name = strtolower(str_replace(array("/","-"),"_",$name));
-        $filesystem = new Filesystem();
+        // $filesystem = new Filesystem();
         $target = $this->getOpenCartDir() . "/system/" . $name . ".ocmod.xml";
 
-        $filesystem->copy($src, $target, true);
+        $this->filesystem->copy($src, $target, true);
     }
 
     /**
