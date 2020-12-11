@@ -49,12 +49,12 @@ class OpenCartExtensionInstaller extends LibraryInstaller
             foreach($extra['mappings'] as $mapping) {
                 $source = $sourceDir . "/" . $mapping;
                 $target = $targetDir . "/" . $mapping;
-                Mylog::write([
-                	'Filesystem::copyFiles',
-                	'curr_dirr' =>  getcwd(),
-                	'source'    => $source,
-	                'target'    =>  $target,
-                ], 'Filesystem::copyFiles');
+//                Mylog::write([
+//                	'Filesystem::copyFiles',
+//                	'curr_dirr' =>  getcwd(),
+//                	'source'    => $source,
+//	                'target'    =>  $target,
+//                ], 'Filesystem::copyFiles');
                 $filesystem->copy($source, $target, true);
             }
         }
@@ -148,7 +148,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
     	$this->io->write("<info>XML installer name - {$name}</info>");
         $name = strtolower(str_replace(array("/","-"),"_",$name));
         $filesystem = new Filesystem();
-        Mylog::write(['curr_dirr' =>  getcwd()], 'curr_dirr');
+//        Mylog::write(['curr_dirr' =>  getcwd()], 'curr_dirr');
 
         $target = $this->getOpenCartDir() . "/system/" . $name . ".ocmod.xml";
 
@@ -165,12 +165,12 @@ class OpenCartExtensionInstaller extends LibraryInstaller
         $srcDir = $this->getSrcDir($this->getInstallPath($package), $package->getExtra());
         $openCartDir = $this->getOpenCartDir();
 
-        Mylog::write(
-        	[
-        		'method::install',
-        		'srcDir'    =>  $srcDir,
-		        'openCartDir'   =>  $openCartDir
-	        ], 'Dirs' );
+//        Mylog::write(
+//        	[
+//        		'method::install',
+//        		'srcDir'    =>  $srcDir,
+//		        'openCartDir'   =>  $openCartDir
+//	        ], 'Dirs' );
 
         $this->copyFiles($srcDir, $openCartDir, $package->getExtra());
         $this->runExtensionInstaller($this->getInstallPath($package), $package->getName(), $package->getExtra());
@@ -185,12 +185,12 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 
         $srcDir = $this->getSrcDir($this->getInstallPath($target), $target->getExtra());
         $openCartDir = $this->getOpenCartDir();
-	    Mylog::write(
-		    [
-			    'method::update',
-			    'srcDir'    =>  $srcDir,
-			    'openCartDir'   =>  $openCartDir
-		    ], 'Dirs' );
+//	    Mylog::write(
+//		    [
+//			    'method::update',
+//			    'srcDir'    =>  $srcDir,
+//			    'openCartDir'   =>  $openCartDir
+//		    ], 'Dirs' );
 
         $this->copyFiles($srcDir, $openCartDir, $target->getExtra());
         $this->runExtensionInstaller($this->getInstallPath($target), $target->getName(), $target->getExtra());
