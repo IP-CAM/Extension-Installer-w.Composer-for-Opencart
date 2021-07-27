@@ -1,5 +1,5 @@
 <?php
-
+// v3.0.2
 namespace BeyondIT\Composer;
 
 use Composer\Installer\LibraryInstaller;
@@ -123,8 +123,8 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 
 		        ob_start();
 		        require_once('admin/config.php');
-		        $application_config = 'admin';
 		        include('system/startup.php');
+		        $application_config = 'admin';
 		        include('system/framework.php');
 		        ob_end_clean();
 
