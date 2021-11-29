@@ -1,7 +1,6 @@
 {
     "name": "kotygor/opencart-extension-installer",
     "description": "Custom Composer Installer for installing OpenCart Extensions",
-    "version": "v3.0.2",
     "type": "composer-plugin",
     "require": {
         "composer-plugin-api": "~2"
