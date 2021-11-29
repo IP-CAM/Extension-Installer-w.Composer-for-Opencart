@@ -81,8 +81,13 @@ class OpenCartExtensionInstaller extends LibraryInstaller
         if (!empty($php)) {
             $this->io->write("    <info>Start running php installer.</info>");
             try {
-                $this->runPhpExtensionInstaller($srcDir ."/". $php);
-                $this->io->write("    <info>Successfully runned php installer.</info>");
+                if ($this->runPhpExtensionInstaller($srcDir ."/". $php)) {
+	                $this->io->write("    <info>Successfully runned php installer.</info>");
+                }
+				else {
+					$this->io->write("    <error>Php installer not runned!</error>");
+				}
+
             } catch (\Exception $e) {
                 $this->io->write("    <error>Error while running php extension installer. " . $e->getMessage() . "</error>");
             }
@@ -135,8 +140,11 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 	        }
 	        $installer = new OpenCartNaivePhpInstaller();
 	        $installer->install($file);
+			$installed = true;
 	    }
 	    chdir($tmpDir);
+		if(!empty($installed)) return true;
+		else return false;
     }
 
     public function runXmlExtensionInstaller($src, $name) {
