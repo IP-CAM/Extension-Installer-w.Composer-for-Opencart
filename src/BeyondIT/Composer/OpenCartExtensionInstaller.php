@@ -114,7 +114,7 @@ class OpenCartExtensionInstaller extends LibraryInstaller
         chdir($openCartDir);
 
         // only trigger install iff config is available
-        if (is_file('admin/config.php')) { // jd todo filesize(config.php) > 0, else cancel extension install https://app.clickup.com/t/e50d7e
+        if (is_file('admin/config.php') && filesize('admin/config.php') > 0) { // jd todo filesize(config.php) > 0, else cancel extension install https://app.clickup.com/t/e50d7e
         	if(!function_exists('modification')) {
 		        $_SERVER['SERVER_PORT'] = 80;
 		        $_SERVER['SERVER_PROTOCOL'] = 'CLI';
