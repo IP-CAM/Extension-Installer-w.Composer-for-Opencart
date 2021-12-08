@@ -7,7 +7,6 @@ use Composer\Package\PackageInterface;
 use Composer\Repository\InstalledRepositoryInterface;
 use Symfony\Component\Filesystem\Filesystem;
 use BeyondIT\Composer\OpenCartNaivePhpInstaller;
-use Kotygor\Mylog;
 
 class OpenCartExtensionInstaller extends LibraryInstaller
 {

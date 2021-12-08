@@ -34,8 +34,7 @@
     },
     "require-dev": {
         "composer/composer": "~2" ,
-        "phpunit/phpunit": "~9",
-        "kotygor/mylog": "v2.x-dev"
+        "phpunit/phpunit": "~9"
     },
     "minimum-stability": "dev"
 }

@@ -5,7 +5,6 @@ namespace BeyondIT\Composer;
 use Composer\Composer;
 use Composer\IO\IOInterface;
 use Composer\Plugin\PluginInterface;
-use Kotygor\Mylog;
 
 class OpenCartExtensionInstallerPlugin implements PluginInterface
 {
