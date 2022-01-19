@@ -147,12 +147,11 @@ class OpenCartExtensionInstaller extends LibraryInstaller
     }
 
     public function runXmlExtensionInstaller($src, $name) {
-    	$this->io->write("<info>XML installer name - {$name}</info>");
         $name = strtolower(str_replace(array("/","-"),"_",$name));
+	    $this->io->write("<info>XML installer name - system/{$name}.ocmod.xml</info>");
+
         $filesystem = new Filesystem();
-
         $target = $this->getOpenCartDir() . "/system/" . $name . ".ocmod.xml";
-
         $filesystem->copy($src, $target, true);
     }
 
