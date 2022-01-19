@@ -5,16 +5,6 @@
     "require": {
         "composer-plugin-api": "~2"
     },
-    "repositories": [
-        {
-            "type": "git",
-            "url": "https://github.com/kotygor/opencart"
-        },
-        {
-            "type": "git",
-            "url": "https://github.com/kotygor/mylog"
-        }
-    ],
     "license": "GPL 3.0",
     "authors": [
         {
