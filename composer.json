@@ -4,6 +4,7 @@
     "type": "composer-plugin",
     "require": {
         "composer-plugin-api": "~2",
+        "symfony/filesystem": "*",
 
         "braintree/braintree_php" : "3.40.0",
         "cardinity/cardinity-sdk-php": "^1.0",
