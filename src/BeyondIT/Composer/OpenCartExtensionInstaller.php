@@ -158,7 +158,8 @@ class OpenCartExtensionInstaller extends LibraryInstaller
 	public static function refreshModification(Event $event) {
 		$registry = null;
 
-		$openCartDir = $event->getComposer()->getPackage()->getExtra()['opencart-install-dir'];
+		require_once $event->getComposer()->getConfig()->get('vendor-dir').'/autoload.php';
+		$openCartDir = $event->getComposer()->getExtra()['opencart-install-dir'];
 //		$this->io->write("<info>Refreshing modifications</info>");
 
 		// opencart not yet available
