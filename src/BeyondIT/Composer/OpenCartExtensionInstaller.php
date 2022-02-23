@@ -155,6 +155,52 @@ class OpenCartExtensionInstaller extends LibraryInstaller
         $filesystem->copy($src, $target, true);
     }
 
+	public function refreshModification() {
+		$registry = null;
+		$openCartDir = $this->getOpenCartDir();
+		$this->io->write("<info>Refreshing modifications</info>");
+
+		// opencart not yet available
+		if (!is_dir($openCartDir)) {
+			return;
+		}
+
+		$tmpDir = getcwd();
+		chdir($openCartDir);
+
+		// only trigger install iff config is available
+		if (is_file('admin/config.php') && filesize('admin/config.php') > 0) {
+			if(!function_exists('modification')) {
+				$_SERVER['SERVER_PORT'] = 80;
+				$_SERVER['SERVER_PROTOCOL'] = 'CLI';
+				$_SERVER['REQUEST_METHOD'] = 'GET';
+				$_SERVER['REMOTE_ADDR'] = '127.0.0.1';
+
+				ob_start();
+				require_once('admin/config.php');
+				include('system/startup.php');
+				$application_config = 'admin';
+				include('system/framework.php');
+				ob_end_clean();
+
+				chdir($tmpDir);
+
+				// $registry comes from system/framework.php
+				OpenCartNaivePhpInstaller::$registry = $registry;
+			}
+			$opencart = new OpenCartNaivePhpInstaller();
+			ob_start();
+			$opencart->load->controller("marketplace/modification/refresh");
+			ob_end_clean();
+
+//			$installer->install($file);
+			$installed = true;
+		}
+		chdir($tmpDir);
+		if(!empty($installed)) return true;
+		else return false;
+	}
+
     /**
      * { @inheritDoc }
      */
