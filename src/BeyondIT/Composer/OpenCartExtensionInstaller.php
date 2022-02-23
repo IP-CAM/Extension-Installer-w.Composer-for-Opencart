@@ -155,10 +155,11 @@ class OpenCartExtensionInstaller extends LibraryInstaller
         $filesystem->copy($src, $target, true);
     }
 
-	public function refreshModification() {
+	public static function refreshModification(Event $event) {
 		$registry = null;
-		$openCartDir = $this->getOpenCartDir();
-		$this->io->write("<info>Refreshing modifications</info>");
+
+		$openCartDir = $event->getComposer()->getPackage()->getExtra()['opencart-install-dir'];
+//		$this->io->write("<info>Refreshing modifications</info>");
 
 		// opencart not yet available
 		if (!is_dir($openCartDir)) {
